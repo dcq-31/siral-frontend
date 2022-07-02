@@ -4,14 +4,23 @@ import MainLayout from 'layouts/MainLayout.vue';
 import AuthLayout from 'layouts/AuthLayout.vue';
 // pages
 import HomePage from 'pages/HomePage.vue';
+import AccountPage from 'pages/AccountPage.vue';
+import StatisticsPage from 'pages/StatisticsPage.vue';
+import ReservePage from 'pages/ReservePage.vue';
 import LoginPage from 'pages/LoginPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: MainLayout,
-    children: [{ path: '', component: HomePage }],
+    children: [
+      { path: '', component: HomePage },
+      { path: '/statistics', component: StatisticsPage },
+      { path: '/reserve', component: ReservePage },
+      { path: '/account', component: AccountPage },
+    ],
   },
+
   {
     path: '/login',
     component: AuthLayout,

@@ -1,25 +1,35 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <MainHeader />
+    <MainHeader @toggle:drawerState="toggleDrawer" />
+    <MainDrawer v-model:drawer-state="drawerState" />
     <q-page-container>
       <router-view />
     </q-page-container>
+    <MainFooter />
   </q-layout>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue';
-import MainHeader from 'components/layout/MainHeader.vue';
+import { defineComponent, ref } from 'vue';
+// Layout components
+import MainHeader from 'components/layouts/MainHeader.vue';
+import MainFooter from 'components/layouts/MainFooter.vue';
+import MainDrawer from 'components/layouts/MainDrawer.vue';
 
 export default defineComponent({
   name: 'MainLayout',
   components: {
     MainHeader,
+    MainDrawer,
+    MainFooter,
   },
   setup() {
-    const drawer_state = ref(false);
+    // State
+    const drawerState = ref(false);
 
-    return { drawer_state };
+    // Methods
+    const toggleDrawer = () => (drawerState.value = !drawerState.value);
+    return { drawerState, toggleDrawer };
   },
 });
 </script>

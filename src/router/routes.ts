@@ -1,8 +1,8 @@
 import { RouteRecordRaw } from 'vue-router';
-// layouts
+// Layouts
 import MainLayout from 'layouts/MainLayout.vue';
 import AuthLayout from 'layouts/AuthLayout.vue';
-// pages
+// Pages
 import HomePage from 'pages/HomePage.vue';
 import AccountPage from 'pages/AccountPage.vue';
 import StatisticsPage from 'pages/StatisticsPage.vue';

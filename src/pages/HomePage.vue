@@ -1,13 +1,13 @@
 <template>
   <q-page>
-    <div class="q-pt-xl q-pb-lg">
-      <div class="q-pa-md q-gutter-sm text-center">
-        <div class="row q-gutter-y-md q-mb-lg">
-          <div class="col-12 col-sm-4">
-            <q-img src="logo.png" alt="SIRAl logo" width="140px" fit="fill" />
+    <div class="q-py-md text-center">
+      <section class="q-gutter-y-lg q-pt-sm q-pb-xl">
+        <div class="row">
+          <div class="col-12 col-sm-4 q-mb-md">
+            <q-img src="logo.png" alt="SIRAl logo" width="135px" fit="fill" />
           </div>
           <div class="col-12 col-md-8">
-            <div class="text-h4 text-weight-light">
+            <div class="text-h4 text-weight-medium text-accent">
               Sistema de Reservación de Alimentación
             </div>
           </div>
@@ -25,18 +25,21 @@
             />
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="q-pa-lg q-py-md q-mb-md bg-blue-1">
-        <div class="row q-gutter-y-sm q-mb-md">
-          <div class="col-12 col-sm-4 text-center">
-            <div class="text-h5 q-pb-sm">Planifica tu calendario</div>
-            <div class="q-pb-md">
+      <section class="q-py-xl bg-blue-1">
+        <div class="row">
+          <div class="col-12 col-sm-4 q-gutter-y-sm text-center">
+            <div class="text-h5 text-weight-medium">
+              Planifica tu calendario
+            </div>
+            <div class="text-body2 q-mb-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
               numquam necessitatibus ea quam.
             </div>
             <q-btn
               color="primary"
+              size="14px"
               label="Calendario"
               padding="sm md"
               rounded
@@ -45,27 +48,27 @@
             />
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="q-pa-md q-py-lg">
-        <div class="row">
+      <section class="q-px-md q-pt-xl">
+        <div class="row q-mb-md">
           <div class="col-12">
-            <div class="text-h5 text-center q-pb-md">
+            <div class="text-h5 text-center text-weight-medium q-pb-md">
               Ventajas de usar SiRAl
             </div>
           </div>
         </div>
 
-        <div class="row q-gutter-y-lg">
+        <div class="row q-gutter-y-xl">
           <div class="col-12 col-sm-4">
             <q-card class="text-center" flat>
-              <q-card-section class="q-pt-sm q-pb-sm">
+              <q-card-section class="q-pt-xs q-pb-none">
                 <q-avatar
                   icon="security_update_good"
-                  font-size="5rem"
-                  size="6rem"
+                  font-size="4rem"
+                  size="5rem"
                   text-color="primary"
-                  class="q-mb-sm"
+                  class="q-mb-md"
                 />
                 <div class="text-h6">Mejor Seguridad</div>
               </q-card-section>
@@ -80,13 +83,13 @@
 
           <div class="col-12 col-sm-4">
             <q-card class="text-center" flat>
-              <q-card-section class="q-pt-sm q-pb-sm">
+              <q-card-section class="q-pt-xs q-pb-none">
                 <q-avatar
                   icon="wifi"
-                  font-size="5rem"
-                  size="6rem"
-                  text-color="primary"
-                  class="q-mb-sm"
+                  font-size="4rem"
+                  size="5rem"
+                  text-color="secondary"
+                  class="q-mb-md"
                 />
                 <div class="text-h6">Disponibilidad</div>
               </q-card-section>
@@ -101,13 +104,13 @@
 
           <div class="col-12 col-sm-4">
             <q-card class="text-center" flat>
-              <q-card-section class="q-pt-sm q-pb-sm">
+              <q-card-section class="q-pt-xs q-pb-none">
                 <q-avatar
                   icon="person"
-                  font-size="5rem"
-                  size="6rem"
-                  text-color="primary"
-                  class="q-mb-sm"
+                  font-size="4rem"
+                  size="5rem"
+                  text-color="blue-grey-8"
+                  class="q-mb-md"
                 />
                 <div class="text-h6">Vinculado a tu cuenta</div>
               </q-card-section>
@@ -120,7 +123,7 @@
             </q-card>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </q-page>
 </template>

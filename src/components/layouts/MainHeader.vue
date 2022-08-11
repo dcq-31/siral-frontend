@@ -5,12 +5,12 @@
       <q-toolbar-title class="text-center">
         <q-btn
           label="SiRAl-UCLV"
-          class="text-body1 text-weight-bold"
           padding="xs sm"
           to="/"
           flat
           unelevated
           no-caps
+          class="text-body1 text-weight-bold"
         />
       </q-toolbar-title>
       <q-btn flat round dense icon="more_vert" />

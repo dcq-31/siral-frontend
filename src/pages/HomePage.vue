@@ -1,10 +1,10 @@
 <template>
-  <q-page>
-    <div class="q-py-md text-center">
+  <q-page padding>
+    <div class="q-pb-md q-pt-xl text-center">
       <section class="q-gutter-y-lg q-pt-sm q-pb-xl">
         <div class="row">
           <div class="col-12 col-sm-4 q-mb-md">
-            <q-img src="logo.png" alt="SIRAl logo" width="135px" fit="fill" />
+            <q-img src="logo.png" alt="SIRAl logo" width="130px" fit="fill" />
           </div>
           <div class="col-12 col-md-8">
             <div class="text-h4 text-weight-medium text-accent">
@@ -19,15 +19,15 @@
               size="16px"
               label="Menú de hoy"
               padding="sm md"
-              rounded
               unelevated
               no-caps
+              class="text-body1"
             />
           </div>
         </div>
       </section>
 
-      <section class="q-py-xl bg-blue-1">
+      <section class="q-py-xl q-px-md bg-blue-1">
         <div class="row">
           <div class="col-12 col-sm-4 q-gutter-y-sm text-center">
             <div class="text-h5 text-weight-medium">
@@ -39,12 +39,11 @@
             </div>
             <q-btn
               color="primary"
-              size="14px"
               label="Calendario"
               padding="sm md"
-              rounded
               unelevated
               no-caps
+              class="text-body1"
             />
           </div>
         </div>
@@ -60,64 +59,25 @@
         </div>
 
         <div class="row q-gutter-y-xl">
-          <div class="col-12 col-sm-4">
+          <div
+            v-for="({ title, subtitle, icon }, key) of benefits"
+            :key="`home-page-benefit-${key}`"
+            class="col-12 col-sm-4"
+          >
             <q-card class="text-center" flat>
               <q-card-section class="q-pt-xs q-pb-none">
                 <q-avatar
-                  icon="security_update_good"
+                  :icon="icon.name"
                   font-size="4rem"
                   size="5rem"
-                  text-color="primary"
+                  :text-color="icon.color"
                   class="q-mb-md"
                 />
-                <div class="text-h6">Mejor Seguridad</div>
+                <div class="text-h6">{{ title }}</div>
               </q-card-section>
               <q-card-section class="q-py-xs">
                 <div class="text-body2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quidem est voluptate porro ad asperiores.
-                </div>
-              </q-card-section>
-            </q-card>
-          </div>
-
-          <div class="col-12 col-sm-4">
-            <q-card class="text-center" flat>
-              <q-card-section class="q-pt-xs q-pb-none">
-                <q-avatar
-                  icon="wifi"
-                  font-size="4rem"
-                  size="5rem"
-                  text-color="secondary"
-                  class="q-mb-md"
-                />
-                <div class="text-h6">Disponibilidad</div>
-              </q-card-section>
-              <q-card-section class="q-py-xs">
-                <div class="text-body2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quidem est voluptate porro ad asperiores.
-                </div>
-              </q-card-section>
-            </q-card>
-          </div>
-
-          <div class="col-12 col-sm-4">
-            <q-card class="text-center" flat>
-              <q-card-section class="q-pt-xs q-pb-none">
-                <q-avatar
-                  icon="person"
-                  font-size="4rem"
-                  size="5rem"
-                  text-color="blue-grey-8"
-                  class="q-mb-md"
-                />
-                <div class="text-h6">Vinculado a tu cuenta</div>
-              </q-card-section>
-              <q-card-section class="q-py-xs">
-                <div class="text-body2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quidem est voluptate porro ad asperiores.
+                  {{ subtitle }}
                 </div>
               </q-card-section>
             </q-card>
@@ -133,5 +93,38 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'HomePage',
+  setup() {
+    const benefits = [
+      {
+        title: 'Mejor Seguridad',
+        subtitle:
+          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+        icon: {
+          name: 'security_update_good',
+          color: 'primary',
+        },
+      },
+      {
+        title: 'Disponibilidad',
+        subtitle:
+          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+        icon: {
+          name: 'wifi',
+          color: 'secondary',
+        },
+      },
+      {
+        title: 'Vinculado a tu cuenta',
+        subtitle:
+          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+        icon: {
+          name: 'manage_accounts',
+          color: 'accent',
+        },
+      },
+    ];
+
+    return { benefits };
+  },
 });
 </script>

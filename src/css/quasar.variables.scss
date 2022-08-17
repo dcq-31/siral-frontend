@@ -13,15 +13,34 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 // Theme that seem UCLV logo !!!
-$primary: #2e8aa7;
-$secondary: #ffb703;
-$accent: #023047;
-
+$primary: #0474ac;
+$primary-1: #5197b4;
+$primary-2: #8cb9ca;
+$secondary: #eba42d;
+$secondary-1: #f3cc80;
+$accent: #3535d4;
 $dark: #1d1d1d;
-
+$dark-page: #121212;
 $positive: #21ba45;
 $negative: #c10015;
 $info: #4fcfe8;
 $warning: #f0f05b;
 
 $button-border-radius: 4px !default;
+
+// Typography
+$body2: (
+  size: 0.975rem,
+  line-height: 1.4rem,
+  letter-spacing: 0.01356em,
+  weight: 400,
+) !default;
+
+$h4: (
+  size: 2.4rem,
+  line-height: 2.5rem,
+  letter-spacing: 0.00735em,
+  weight: 400,
+) !default;
+
+$body-font-size: 16px;

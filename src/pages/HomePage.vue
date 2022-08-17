@@ -7,7 +7,7 @@
             <q-img src="logo.png" alt="SIRAl logo" width="130px" fit="fill" />
           </div>
           <div class="col-12 col-md-8">
-            <div class="text-h4 text-weight-medium text-accent">
+            <div class="text-h4 text-weight-medium text-primary-1">
               Sistema de Reservación de Alimentación
             </div>
           </div>
@@ -37,6 +37,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
               numquam necessitatibus ea quam.
             </div>
+
             <q-btn
               color="primary"
               label="Calendario"

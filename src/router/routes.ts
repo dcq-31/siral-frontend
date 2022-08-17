@@ -8,6 +8,7 @@ import AccountPage from 'pages/AccountPage.vue';
 import StatisticsPage from 'pages/StatisticsPage.vue';
 import ReservePage from 'pages/ReservePage.vue';
 import LoginPage from 'pages/LoginPage.vue';
+import TestPage from 'pages/TestPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -18,6 +19,7 @@ const routes: RouteRecordRaw[] = [
       { path: '/statistics', component: StatisticsPage },
       { path: '/reserve', component: ReservePage },
       { path: '/account', component: AccountPage },
+      { path: '/test', component: TestPage },
     ],
   },
 

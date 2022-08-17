@@ -37,15 +37,5 @@ export const get_array_dates = (start: string, end: string): Array<string> => {
     dates.push(date.formatDate(currentDate, FRIENDLY_DATE_MASK));
     currentDate.setTime(+currentDate + ONE_DAY);
   }
-  // while (currentDate <= endDate) {
-  //   if (currentDate.getDate() == 1 && currentDate.getMonth() == 0) {
-  //     dates.push(currentDate.getFullYear().toString());
-  //   } else if (currentDate.getDate() == 1) {
-  //     dates.push(MONTHS_SHORT_NAME[currentDate.getMonth()]);
-  //   } else {
-  //     dates.push(currentDate.getDate().toString());
-  //   }
-  //   currentDate.setTime(+currentDate + ONE_DAY);
-  // }
   return dates;
 };

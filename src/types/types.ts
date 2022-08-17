@@ -11,7 +11,7 @@ export type TDayScheduleData = {
 };
 
 /**
- * Dates
+ * Date Range
  */
 export interface IDateRange {
   from: string;
@@ -19,9 +19,9 @@ export interface IDateRange {
 }
 
 /**
- * Data for Line Charts
+ * Data for Charts
  */
-export interface ILineChartData {
+export interface IRangeData {
   range: IDateRange;
   values: TDayScheduleData;
 }

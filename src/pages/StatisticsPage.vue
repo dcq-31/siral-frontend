@@ -1,48 +1,51 @@
 <template>
   <q-page padding>
     <div class="q-py-md">
-      <!-- Introduction header & date input -->
-      <section>
-        <div class="row q-gutter-y-md">
+      <!-- Title and subtitle -->
+      <section class="q-py-sm text-center">
+        <div class="row q-gutter-y-sm">
           <div class="col-12">
-            <div class="text-h4 text-center text-weight-medium text-accent">
-              Estadísticas
+            <div class="text-h4 text-dark text-weight-medium">Estadísticas</div>
+          </div>
+          <div class="col-12">
+            <div class="text-body1 text-grey-9">
+              Resumen de sus gastos de reservas en SiRAl-UCLV.
             </div>
-          </div>
-          <div class="col-12 col-md-6 text-center q-px-md">
-            Seleccione un rango de fechas para representar mediante gráficos los
-            gastos de reservas en los días indicados.
-          </div>
-          <div class="col-12 col-md-6 text-center">
-            <q-date
-              v-model="modelDate"
-              color="primary"
-              :mask="ISO_DATE_MASK"
-              minimal
-              range
-              no-unset
-              bordered
-              class="shadow-3"
-            >
-              <div class="row justify-end q-gutter-sm">
-                <q-btn
-                  label="Mostrar gráficas"
-                  color="primary"
-                  padding="xs sm"
-                  @click="updateRange"
-                  no-caps
-                  unelevated
-                  class="full-width"
-                />
-              </div>
-            </q-date>
           </div>
         </div>
       </section>
 
-      <!-- Charts -->
+      <!-- Date input -->
+      <section class="q-py-md q-px-sm">
+        <div class="row q-gutter-y-md">
+          <div class="col-12 col-md-6 text-body1">
+            Elige el rango de fechas para mostrar en gráficas y tablas los
+            gastos en reservas de desayunos, almuerzos y comidas.
+            <div class="q-my-md text-center">
+              <q-btn
+                color="primary"
+                label="Editar calendario"
+                padding="sm md"
+                size="16px"
+                no-caps
+                unelevated
+                class="q-mx-auto"
+              >
+                <q-popup-proxy cover transition-duration="300">
+                  <InputDateRange v-model="modelDate" buttons-close-popup />
+                </q-popup-proxy>
+              </q-btn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Data show -->
       <section class="q-py-md">
-        <div class="row">
+        <div class="row q-gutter-y-lg">
+          <div class="col-12">
+            <StatisticsTable :data="data" />
+          </div>
           <div class="col-12">
             <LineChart :height="400" :data="data" />
           </div>
@@ -54,69 +57,37 @@
 
 <script setup lang="ts">
 /**
- * TODO: Limit user selection to certain times in the calendar input
  * TODO: For now values are set to constants values, real data must be read from the server
  */
-import { ref, computed, Ref } from 'vue';
-import { date } from 'quasar';
-import { test_get_charts_data } from 'src/helpers/functions';
-import { ISO_DATE_MASK } from 'src/helpers/constants';
-
-// Types
-import { TDayScheduleData, IDateRange, ILineChartData } from 'src/types/types';
+import { ref, Ref, computed } from 'vue';
+import { INITIAL_DATE_RANGE } from 'src/helpers/constants';
+import { IDateRange } from 'src/types/types';
 
 // Components
+import InputDateRange from 'components/forms/InputDateRange.vue';
 import LineChart from 'components/charts/LineChart.vue';
+import StatisticsTable from 'components/StatisticsTable.vue';
+
+// Services
+import { getChartData } from 'src/services/test';
 
 /**
- * Initial model range of dates, 7 days ago until now
+ * Model for date input
+ * Initial value 7 days ago until now
  */
-const modelDate: Ref<string | IDateRange> = ref({
-  from: date.formatDate(
-    date.subtractFromDate(new Date(), { days: 7 }),
-    ISO_DATE_MASK
-  ),
-  to: date.formatDate(new Date(), ISO_DATE_MASK),
-});
+const modelDate: Ref<IDateRange> = ref(INITIAL_DATE_RANGE);
 
 /**
- * Computed Properties
+ * Data used by charts
  */
-const compModelDate = computed<IDateRange>(() =>
-  typeof modelDate.value === 'string'
-    ? { from: modelDate.value, to: modelDate.value }
-    : { from: modelDate.value.from, to: modelDate.value.to }
-);
-
-/**
- * Methods
- */
-const getChartData = (dateStart: string, dateEnd: string): TDayScheduleData => {
-  /**
-   * TODO: Make request to get data for the specified range
-   */
+const data = computed(() => {
   return {
-    breakfast: test_get_charts_data(dateStart, dateEnd),
-    lunch: test_get_charts_data(dateStart, dateEnd),
-    dinner: test_get_charts_data(dateStart, dateEnd),
+    range: modelDate.value,
+    values: getChartData(modelDate.value.from, modelDate.value.to),
   };
-};
-
-const updateRange = () => {
-  data.value = {
-    range: compModelDate.value,
-    values: getChartData(compModelDate.value.from, compModelDate.value.to),
-  };
-};
-const data: Ref<ILineChartData> = ref({
-  range: compModelDate.value,
-  values: getChartData(compModelDate.value.from, compModelDate.value.to),
 });
 </script>
 
-<!--
-  SCSS Styles
--->
 <style lang="scss">
 .q-date__view,
 .q-date__calendar-days-container {

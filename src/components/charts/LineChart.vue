@@ -32,10 +32,16 @@ import {
 } from 'echarts/components';
 import VChart from 'vue-echarts';
 
-import { FRIENDLY_DATE_MASK, MONTHS_SHORT_NAME } from 'src/helpers/constants';
+// Helpers
+import {
+  FRIENDLY_DATE_MASK,
+  MONTHS_SHORT_NAME,
+  CHARTS,
+} from 'src/helpers/constants';
 import { get_array_dates } from 'src/helpers/functions';
+
 // Types
-import { ILineChartData } from 'src/types/types';
+import { IRangeData } from 'src/types/types';
 
 use([
   SVGRenderer,
@@ -50,17 +56,31 @@ use([
 const props = defineProps<{
   height?: number;
   width?: number;
-  data: ILineChartData;
+  data: IRangeData;
 }>();
 
 const option = computed(() => {
   return {
     animation: false,
     xAxis: {
+      name: 'Fecha',
+      nameLocation: 'center',
+      nameTextStyle: {
+        fontSize: CHARTS.TEXT.FONT_SIZE,
+        color: CHARTS.TEXT.COLOR,
+      },
+      nameGap: 25,
       type: 'category',
       boundaryGap: false,
       data: get_array_dates(props.data.range.from, props.data.range.to),
+      axisLine: {
+        lineStyle: {
+          color: CHARTS.AXIS.COLOR,
+        },
+      },
       axisLabel: {
+        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
+        color: CHARTS.TEXT.COLOR,
         formatter: (value: string) => {
           const currentDate = date.extractDate(value, FRIENDLY_DATE_MASK);
           if (currentDate.getDate() == 1 && currentDate.getMonth() == 0) {
@@ -72,25 +92,47 @@ const option = computed(() => {
           }
         },
       },
+      axisTick: {
+        lineStyle: {
+          color: CHARTS.AXIS.COLOR,
+        },
+      },
     },
     yAxis: {
+      name: 'Gastos',
+      nameTextStyle: {
+        fontSize: CHARTS.TEXT.FONT_SIZE,
+        color: CHARTS.TEXT.COLOR,
+      },
       type: 'value',
+      axisLine: {
+        lineStyle: {
+          color: CHARTS.AXIS.COLOR,
+        },
+      },
       axisLabel: {
-        formatter: '{value} $',
+        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
+        color: CHARTS.TEXT.COLOR,
       },
     },
     tooltip: {
       trigger: 'axis',
+      textStyle: {
+        fontSize: CHARTS.TOOLTIP.FONT_SIZE,
+        color: CHARTS.TOOLTIP.COLOR,
+      },
     },
     legend: {
-      bottom: 10,
       left: 'center',
+      textStyle: {
+        fontSize: CHARTS.LEGEND.FONT_SIZE,
+      },
     },
     dataZoom: [
       {
         type: 'inside',
-        minValueSpan: 5,
-        maxValueSpan: 5,
+        minValueSpan: 4,
+        maxValueSpan: 4,
       },
     ],
     /**
@@ -102,18 +144,21 @@ const option = computed(() => {
         data: props.data.values.breakfast,
         type: 'line',
         symbol: 'circle',
+        symbolSize: 5,
       },
       {
         name: 'Almuerzo',
         data: props.data.values.lunch,
         type: 'line',
         symbol: 'circle',
+        symbolSize: 5,
       },
       {
         name: 'Comida',
         data: props.data.values.dinner,
         type: 'line',
         symbol: 'circle',
+        symbolSize: 5,
       },
     ],
   };

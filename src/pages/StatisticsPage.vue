@@ -49,6 +49,9 @@
           <div class="col-12">
             <LineChart :height="400" :data="data" />
           </div>
+          <div class="col-12">
+            <PieChart :height="250" :data="pieChartData" />
+          </div>
         </div>
       </section>
     </div>
@@ -61,12 +64,16 @@
  */
 import { ref, Ref, computed } from 'vue';
 import { INITIAL_DATE_RANGE } from 'src/helpers/constants';
-import { IDateRange } from 'src/types/types';
+import { IDateRange, TTotalScheduleData } from 'src/types/types';
 
 // Components
 import InputDateRange from 'components/forms/InputDateRange.vue';
 import LineChart from 'components/charts/LineChart.vue';
+import PieChart from 'components/charts/PieChart.vue';
 import StatisticsTable from 'components/StatisticsTable.vue';
+
+// Helpers
+import { sum_two_numbers } from 'src/helpers/functions';
 
 // Services
 import { getChartData } from 'src/services/test';
@@ -84,6 +91,17 @@ const data = computed(() => {
   return {
     range: modelDate.value,
     values: getChartData(modelDate.value.from, modelDate.value.to),
+  };
+});
+
+/**
+ *
+ */
+const pieChartData = computed<TTotalScheduleData>(() => {
+  return {
+    breakfast: data.value.values.breakfast.reduce(sum_two_numbers),
+    lunch: data.value.values.lunch.reduce(sum_two_numbers),
+    dinner: data.value.values.dinner.reduce(sum_two_numbers),
   };
 });
 </script>

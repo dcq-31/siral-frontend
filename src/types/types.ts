@@ -11,6 +11,13 @@ export type TDayScheduleData = {
 };
 
 /**
+ * Schedule Total Data
+ */
+export type TTotalScheduleData = {
+  [key in TDaySchedule]: number;
+};
+
+/**
  * Date Range
  */
 export interface IDateRange {

@@ -39,3 +39,9 @@ export const get_array_dates = (start: string, end: string): Array<string> => {
   }
   return dates;
 };
+
+/**
+ * Sum two numbers
+ */
+export const sum_two_numbers = (first: number, second: number) =>
+  first + second;

@@ -47,11 +47,19 @@ const option = computed(() => {
     },
     legend: {
       left: 'center',
+      textStyle: {
+        fontSize: CHARTS.LEGEND.FONT_SIZE,
+        color: CHARTS.LEGEND.COLOR,
+      },
     },
     series: [
       {
         type: 'pie',
         radius: '50%',
+        label: {
+          fontSize: CHARTS.TEXT.FONT_SIZE,
+          color: CHARTS.TEXT.COLOR,
+        },
         data: [
           { value: props.data.breakfast, name: 'Desayuno' },
           { value: props.data.lunch, name: 'Almuerzo' },

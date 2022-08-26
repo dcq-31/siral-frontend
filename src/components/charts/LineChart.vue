@@ -33,11 +33,7 @@ import {
 import VChart from 'vue-echarts';
 
 // Helpers
-import {
-  FRIENDLY_DATE_MASK,
-  MONTHS_SHORT_NAME,
-  CHARTS,
-} from 'src/helpers/constants';
+import { FRIENDLY_DATE_MASK, MONTHS, CHARTS } from 'src/helpers/constants';
 import { get_array_dates } from 'src/helpers/functions';
 
 // Types
@@ -86,7 +82,7 @@ const option = computed(() => {
           if (currentDate.getDate() == 1 && currentDate.getMonth() == 0) {
             return currentDate.getFullYear().toString();
           } else if (currentDate.getDate() == 1) {
-            return MONTHS_SHORT_NAME[currentDate.getMonth()];
+            return MONTHS.ES.SHORT[currentDate.getMonth()];
           } else {
             return currentDate.getDate().toString();
           }
@@ -126,6 +122,7 @@ const option = computed(() => {
       left: 'center',
       textStyle: {
         fontSize: CHARTS.LEGEND.FONT_SIZE,
+        color: CHARTS.LEGEND.COLOR,
       },
     },
     dataZoom: [

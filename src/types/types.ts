@@ -4,6 +4,23 @@
 type TDaySchedule = 'breakfast' | 'lunch' | 'dinner';
 
 /**
+ *
+ */
+type TMonth =
+  | 'January'
+  | 'February'
+  | 'March'
+  | 'April'
+  | 'May'
+  | 'June'
+  | 'July'
+  | 'Agost'
+  | 'September'
+  | 'October'
+  | 'November'
+  | 'December';
+
+/**
  * Schedule Day Data
  */
 export type TDayScheduleData = {
@@ -32,3 +49,10 @@ export interface IRangeData {
   range: IDateRange;
   values: TDayScheduleData;
 }
+
+/**
+ *
+ */
+export type TMonthCost = {
+  [key in TMonth]: number;
+};

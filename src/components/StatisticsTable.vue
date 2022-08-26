@@ -2,7 +2,7 @@
   TODO: Use QTable that support more features
 -->
 <template>
-  <q-markup-table style="max-height: 400px">
+  <q-markup-table :style="{ maxHeight: maxHeight + 'px' }">
     <thead>
       <tr class="bg-primary text-white">
         <th
@@ -19,11 +19,11 @@
         v-for="(date, index) of dates"
         :key="`statistics-table-body-${index}`"
       >
-        <td class="text-left">{{ date }}</td>
-        <td class="text-right">$ {{ data.values.breakfast[index] }}</td>
-        <td class="text-right">$ {{ data.values.lunch[index] }}</td>
-        <td class="text-right">$ {{ data.values.dinner[index] }}</td>
-        <td class="text-right">$ {{ total[index] }}</td>
+        <td class="text-center">{{ date }}</td>
+        <td class="text-center">$ {{ data.values.breakfast[index] }}</td>
+        <td class="text-center">$ {{ data.values.lunch[index] }}</td>
+        <td class="text-center">$ {{ data.values.dinner[index] }}</td>
+        <td class="text-center">$ {{ total[index] }}</td>
       </tr>
     </tbody>
   </q-markup-table>
@@ -38,6 +38,7 @@ const colNames = ['Fecha', 'Desayunos', 'Almuerzos', 'Comidas', 'Importe'];
 
 const props = defineProps<{
   data: IRangeData;
+  maxHeight: number;
 }>();
 
 const dates = computed(() =>
@@ -59,7 +60,13 @@ const total = computed(() => {
 </script>
 
 <style lang="scss">
-.q-markup-table tbody tr:hover {
-  background-color: $grey-2;
+.q-markup-table {
+  tbody tr:hover {
+    background-color: $grey-2;
+  }
+  thead th,
+  tbody td {
+    font-size: 14px;
+  }
 }
 </style>

@@ -2,13 +2,13 @@
   <q-page padding>
     <div class="q-py-md">
       <!-- Title and subtitle -->
-      <section class="q-py-sm text-center">
+      <section class="q-py-md text-center">
         <div class="row q-gutter-y-sm">
           <div class="col-12">
             <div class="text-h4 text-dark text-weight-medium">Estadísticas</div>
           </div>
           <div class="col-12">
-            <div class="text-body1 text-grey-9">
+            <div class="text-body1 text-grey-9 q-mx-md">
               Resumen de sus gastos de reservas en SiRAl-UCLV.
             </div>
           </div>
@@ -16,12 +16,12 @@
       </section>
 
       <!-- Date input -->
-      <section class="q-py-md q-px-sm">
-        <div class="row q-gutter-y-md">
+      <section class="q-py-md text-center">
+        <div class="row">
           <div class="col-12 col-md-6 text-body1">
             Elige el rango de fechas para mostrar en gráficas y tablas los
             gastos en reservas de desayunos, almuerzos y comidas.
-            <div class="q-my-md text-center">
+            <div class="q-mt-md">
               <q-btn
                 color="primary"
                 label="Editar calendario"
@@ -40,17 +40,29 @@
         </div>
       </section>
 
-      <!--Data show -->
+      <!-- Table and Graphics -->
       <section class="q-py-md">
-        <div class="row q-gutter-y-lg">
+        <div class="row q-mb-md">
           <div class="col-12">
-            <StatisticsTable :data="data" />
+            <div
+              class="text-h5 text-dark text-weight-medium text-center q-px-md"
+            >
+              Tabla, gráfico de líneas y gráfico de pastel
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <StatisticsTable :data="data" :max-height="400" class="q-mb-xl" />
           </div>
           <div class="col-12">
-            <LineChart :height="400" :data="data" />
+            <LineChart :height="400" :data="data" class="q-mb-lg" />
           </div>
           <div class="col-12">
-            <PieChart :height="250" :data="pieChartData" />
+            <PieChart :height="300" :data="pieChartData" />
+          </div>
+          <div class="col-12">
+            <BarChart :height="400" :data="barChartData" />
           </div>
         </div>
       </section>
@@ -70,10 +82,11 @@ import { IDateRange, TTotalScheduleData } from 'src/types/types';
 import InputDateRange from 'components/forms/InputDateRange.vue';
 import LineChart from 'components/charts/LineChart.vue';
 import PieChart from 'components/charts/PieChart.vue';
+import BarChart from 'components/charts/BarChart.vue';
 import StatisticsTable from 'components/StatisticsTable.vue';
 
 // Helpers
-import { sum_two_numbers } from 'src/helpers/functions';
+import { sum_two_numbers, test_get_cost_by_month } from 'src/helpers/functions';
 
 // Services
 import { getChartData } from 'src/services/test';
@@ -104,6 +117,8 @@ const pieChartData = computed<TTotalScheduleData>(() => {
     dinner: data.value.values.dinner.reduce(sum_two_numbers),
   };
 });
+
+const barChartData = test_get_cost_by_month();
 </script>
 
 <style lang="scss">

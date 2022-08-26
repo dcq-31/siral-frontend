@@ -26,7 +26,8 @@ $negative: #c10015;
 $info: #4fcfe8;
 $warning: #f0f05b;
 
-$button-border-radius: 4px !default;
+// Globals
+$body-color: #262626;
 
 // Typography
 $body2: (
@@ -36,11 +37,4 @@ $body2: (
   weight: 400,
 ) !default;
 
-$h4: (
-  size: 2.4rem,
-  line-height: 2.5rem,
-  letter-spacing: 0.00735em,
-  weight: 400,
-) !default;
-
-$body-font-size: 16px;
+$button-border-radius: 4px !default;

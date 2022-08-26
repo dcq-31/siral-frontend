@@ -3,11 +3,16 @@
  */
 
 import { date } from 'quasar';
+
+// Constants
 import {
   ONE_DAY,
   FRIENDLY_DATE_MASK,
   ISO_DATE_MASK,
 } from 'src/helpers/constants';
+
+// Types
+import { TMonthCost } from 'src/types/types';
 
 /**
  * Get an array of number values for [start - end] date range
@@ -38,6 +43,26 @@ export const get_array_dates = (start: string, end: string): Array<string> => {
     currentDate.setTime(+currentDate + ONE_DAY);
   }
   return dates;
+};
+
+/**
+ * Get total cost for each month
+ */
+export const test_get_cost_by_month = (): TMonthCost => {
+  return {
+    January: 120,
+    February: 11,
+    March: 5,
+    April: 123,
+    May: 56,
+    June: 80,
+    July: 112,
+    Agost: 190,
+    September: 200,
+    October: 31,
+    November: 47,
+    December: 89,
+  };
 };
 
 /**

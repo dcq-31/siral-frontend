@@ -4,21 +4,74 @@
 import { date } from 'quasar';
 import { IDateRange } from 'src/types/types';
 
+// Colors
+const COLORS = {
+  BODY: '#262626',
+};
+
 export const DAY_SCHEDULE = ['breakfast', 'lunch', 'dinner'];
-export const MONTHS_SHORT_NAME = [
-  'Ene',
-  'Feb',
-  'Mar',
-  'Abr',
-  'May',
-  'Jun',
-  'Jul',
-  'Ago',
-  'Sept',
-  'Oct',
-  'Nov',
-  'Dic',
-];
+export const MONTHS = {
+  ES: {
+    SHORT: [
+      'Ene',
+      'Feb',
+      'Mar',
+      'Abr',
+      'May',
+      'Jun',
+      'Jul',
+      'Ago',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dic',
+    ],
+    FULL: [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ],
+  },
+  ENG: {
+    SHORT: [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Ago',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dic',
+    ],
+    FULL: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'Agost',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+  },
+};
 
 // Dates Formatter
 export const ISO_DATE_MASK = 'YYYY-MM-DD';
@@ -39,19 +92,20 @@ export const INITIAL_DATE_RANGE: IDateRange = {
 export const CHARTS = {
   TEXT: {
     FONT_SIZE: 14,
-    COLOR: '#424242',
+    COLOR: COLORS.BODY,
   },
   AXIS: {
-    COLOR: '#616161',
+    COLOR: COLORS.BODY,
   },
   AXIS_LABEL: {
-    FONT_SIZE: 13,
+    FONT_SIZE: 14,
   },
   TOOLTIP: {
     FONT_SIZE: 13,
-    COLOR: '#424242',
+    COLOR: COLORS.BODY,
   },
   LEGEND: {
     FONT_SIZE: 14,
+    COLOR: COLORS.BODY,
   },
 };

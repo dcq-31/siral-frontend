@@ -5,3 +5,14 @@ body {
 .q-page-container {
   padding-bottom: 20px !important;
 }
+
+section {
+  padding: 4rem 0;
+}
+
+// Text with gradient
+.text-gradient-primary {
+  background: linear-gradient(-45deg, $primary, $primary-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

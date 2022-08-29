@@ -2,7 +2,7 @@
   TODO: Use QTable that support more features
 -->
 <template>
-  <q-markup-table :style="{ maxHeight: maxHeight + 'px' }">
+  <q-markup-table :style="`max-height: ${maxHeight}px`" class="text-body2">
     <thead>
       <tr class="bg-primary text-white">
         <th

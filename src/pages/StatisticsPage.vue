@@ -2,23 +2,22 @@
   <q-page padding>
     <div class="q-py-md">
       <!-- Title and subtitle -->
-      <section class="q-py-md text-center">
-        <div class="row q-gutter-y-sm">
-          <div class="col-12">
-            <div class="text-h4 text-dark text-weight-medium">Estadísticas</div>
-          </div>
-          <div class="col-12">
-            <div class="text-body1 text-grey-9 q-mx-md">
+      <section class="q-py-md">
+        <div class="row justify-center q-gutter-y-sm">
+          <div class="col-12 col-sm-8 col-md-6 text-center">
+            <div class="text-h5 text-weight-medium">Estadísticas</div>
+            <div class="text-subtitle1 text-grey-8 q-mx-md">
               Resumen de sus gastos de reservas en SiRAl-UCLV.
             </div>
           </div>
         </div>
       </section>
+      <!-- / Title and subtitle -->
 
       <!-- Date input -->
-      <section class="q-py-md text-center">
-        <div class="row">
-          <div class="col-12 col-md-6 text-body1">
+      <section class="q-py-md">
+        <div class="row justify-center text-center">
+          <div class="col-12 col-md-8 text-body2">
             Elige el rango de fechas para mostrar en gráficas y tablas los
             gastos en reservas de desayunos, almuerzos y comidas.
             <div class="q-mt-md">
@@ -29,7 +28,7 @@
                 size="16px"
                 no-caps
                 unelevated
-                class="q-mx-auto"
+                class="text-body2 text-weight-medium q-mx-auto"
               >
                 <q-popup-proxy cover transition-duration="300">
                   <InputDateRange v-model="modelDate" buttons-close-popup />
@@ -39,33 +38,30 @@
           </div>
         </div>
       </section>
+      <!-- / Date input -->
 
       <!-- Table and Graphics -->
       <section class="q-py-md">
-        <div class="row q-mb-md">
-          <div class="col-12">
-            <div
-              class="text-h5 text-dark text-weight-medium text-center q-px-md"
-            >
-              Tabla, gráfico de líneas y gráfico de pastel
+        <div class="row">
+          <div class="col-12 col-md-5">
+            <StatisticsTable :data="data" :max-height="400" class="q-mb-lg" />
+          </div>
+          <div class="col-12 col-md-7">
+            <div class="q-mb-lg">
+              <LineChart :height="400" :data="data" />
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <StatisticsTable :data="data" :max-height="400" class="q-mb-xl" />
+          <div class="col-12 col-md-6">
+            <div class="q-mb-lg">
+              <PieChart :height="260" :data="pieChartData" />
+            </div>
           </div>
-          <div class="col-12">
-            <LineChart :height="400" :data="data" class="q-mb-lg" />
-          </div>
-          <div class="col-12">
-            <PieChart :height="300" :data="pieChartData" />
-          </div>
-          <div class="col-12">
+          <div class="col-12 col-md-6">
             <BarChart :height="400" :data="barChartData" />
           </div>
         </div>
       </section>
+      <!-- / Table and Graphics -->
     </div>
   </q-page>
 </template>

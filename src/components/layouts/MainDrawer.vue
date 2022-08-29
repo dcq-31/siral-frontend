@@ -150,8 +150,15 @@ const links: Array<ILink> = [
 
   .footer {
     padding-bottom: 1rem;
-    .q-item .q-item__section > .q-item__label {
-      line-height: 0.08125em !important;
+    .q-item {
+      border-radius: 10px;
+      width: fit-content;
+      margin-top: 10px;
+      margin-left: 15px;
+      padding: 8px 12px;
+      .q-item__section > .q-item__label {
+        line-height: 0.08125em !important;
+      }
     }
   }
 }

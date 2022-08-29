@@ -13,7 +13,7 @@
             <q-btn
               color="primary"
               label="Menú de hoy"
-              padding="10px lg"
+              padding="sm md"
               :ripple="false"
               unelevated
               no-caps

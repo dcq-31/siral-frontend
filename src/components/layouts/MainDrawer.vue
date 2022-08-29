@@ -1,170 +1,157 @@
 <template>
   <q-drawer
     v-model="drawerStateComputed"
-    show-if-above
-    :width="270"
-    :breakpoint="700"
+    :width="280"
+    behavior="mobile"
+    :overlay="true"
   >
-    <q-list padding>
-      <q-item>
-        <q-item-section avatar>
-          <q-avatar
-            font-size="40px"
-            color="grey-9"
-            text-color="white"
-            icon="account_circle"
+    <!-- Header -->
+    <div class="header">
+      <div class="row justify-between">
+        <div class="col-auto">
+          <q-btn
+            icon="arrow_back"
+            :ripple="false"
+            flat
+            round
+            dense
+            @click="closeDrawer"
           />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-weight-medium q-mb-xs">
-            Darián Capote Quintana</q-item-label
-          >
-          <q-item-label class="text-body2">
-            <q-badge color="primary" class="q-py-xs"> Trabajador </q-badge>
-          </q-item-label>
-        </q-item-section>
-      </q-item>
+        </div>
+        <div class="col">
+          <q-item>
+            <q-item-section>
+              <q-item-label class="text-right text-weight-medium"
+                >Darián Capote Quintana</q-item-label
+              >
+              <q-item-label caption class="text-right">Trabajador</q-item-label>
+            </q-item-section>
 
-      <q-separator inset spaced />
+            <q-item-section side top>
+              <q-icon name="account_box" color="primary-1" size="2.7rem" />
+            </q-item-section>
+          </q-item>
+        </div>
+      </div>
+    </div>
+    <!-- / Header -->
 
-      <q-item
-        to="/"
-        active-class="link-active-class"
-        exact
-        clickable
-        v-ripple="{ color: 'grey-9' }"
-      >
-        <q-item-section side>
-          <q-icon name="home" color="grey-9" font-size="30px" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-grey-9">Inicio</q-item-label>
-        </q-item-section>
-      </q-item>
+    <q-separator spaced inset />
 
-      <q-item
-        :to="{ path: '/reserve', params: { type: 'breakfast' } }"
-        active-class="link-active-class"
-        exact
-        clickable
-        v-ripple="{ color: 'grey-9' }"
-      >
-        <q-item-section side>
-          <q-icon name="free_breakfast" color="grey-9" font-size="30px" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-grey-9">Desayunos</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item
-        :to="{ path: '/reserve', params: { type: 'dinner' } }"
-        active-class="link-active-class"
-        exact
-        clickable
-        v-ripple="{ color: 'grey-9' }"
-      >
-        <q-item-section side>
-          <q-icon name="dinner_dining" color="grey-9" font-size="30px" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-grey-9">Almuerzos</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item
-        :to="{ path: '/reserve', params: { type: 'lunch' } }"
-        active-class="link-active-class"
-        exact
-        clickable
-        v-ripple="{ color: 'grey-9' }"
-      >
-        <q-item-section side>
-          <q-icon name="brunch_dining" color="grey-9" font-size="30px" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-grey-9">Comidas</q-item-label>
-        </q-item-section>
-      </q-item>
-
-      <q-item
-        to="/statistics"
-        active-class="link-active-class"
-        v-ripple="{ color: 'grey-9' }"
-        exact
-        clickable
-      >
-        <q-item-section side>
-          <q-icon name="bar_chart" color="grey-9" font-size="30px" />
-        </q-item-section>
-        <q-item-section>
-          <q-item-label class="text-body1 text-grey-9"
-            >Estadísticas</q-item-label
-          >
-        </q-item-section>
-      </q-item>
-    </q-list>
-
-    <q-item
-      v-ripple="{ color: 'grey-9' }"
-      @click="closeSesion"
-      clickable
-      class="absolute-bottom"
-      style="border-bottom-right-radius: 12px"
-    >
-      <q-item-section side>
-        <q-icon name="logout" color="grey-9" font-size="30px" />
-      </q-item-section>
-      <q-item-section>
-        <q-item-label class="text-body1 text-grey-9"
-          >Cerrar sesión</q-item-label
+    <!-- Body -->
+    <div class="body">
+      <q-list padding>
+        <q-item
+          v-for="(link, index) of links"
+          :to="link.to"
+          active-class="link-active-class"
+          exact
+          clickable
+          :key="`main-drawer-link-${index}`"
         >
-      </q-item-section>
-    </q-item>
+          <q-item-section side>
+            <q-icon :name="link.icon" color="primary-1" font-size="30px" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label class="text-body2 text-grey-8">{{
+              link.label
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </div>
+    <!-- / Body -->
+
+    <!-- Footer -->
+    <div class="footer absolute-bottom">
+      <q-item to="/login" clickable @click="closeSesion">
+        <q-item-section side>
+          <q-icon name="logout" color="primary-1" font-size="30px" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label class="text-body2 text-grey-8"
+            >Cerrar sesión</q-item-label
+          >
+        </q-item-section>
+      </q-item>
+    </div>
+    <!-- / Footer -->
   </q-drawer>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { defineProps, computed } from 'vue';
 
-export default defineComponent({
-  name: 'MainDrawer',
-  props: {
-    drawerState: {
-      type: Boolean,
-      required: true,
-    },
+interface ILink {
+  icon: string;
+  to: string;
+  label: string;
+}
+
+const props = defineProps<{
+  drawerState: boolean;
+}>();
+
+const emits = defineEmits<{
+  (e: 'update:drawerState', value: boolean): void;
+}>();
+
+const closeDrawer = () => (drawerStateComputed.value = false);
+const closeSesion = () => console.log('Close Sesion button clicked!');
+
+const drawerStateComputed = computed({
+  get() {
+    return props.drawerState;
   },
-  emits: ['update:drawerState'],
-  setup(props, context) {
-    // State
-    const drawerStateComputed = computed({
-      get() {
-        return props.drawerState;
-      },
-      set(value: boolean) {
-        context.emit('update:drawerState', value);
-      },
-    });
-
-    // Methods
-    const closeDrawer = () => (drawerStateComputed.value = false);
-    const closeSesion = () => console.log('Close Sesion button clicked!');
-
-    return { drawerStateComputed, closeDrawer, closeSesion };
+  set(value: boolean) {
+    emits('update:drawerState', value);
   },
 });
+
+const links: Array<ILink> = [
+  { icon: 'home', to: '/', label: 'Inicio' },
+  { icon: 'calendar_month', to: '/reserve', label: 'Reservar' },
+  { icon: 'list', to: '/all-reserves', label: 'Todas las reservas' },
+  { icon: 'bar_chart', to: '/statistics', label: 'Estadísticas' },
+];
 </script>
 
 <style lang="scss">
 .q-drawer-container {
-  .q-drawer--left,
-  .q-drawer__content {
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
+  .header {
+    padding-top: 1rem;
+    padding-left: 10px;
+    padding-right: 10px;
 
-    .q-list > .q-item.link-active-class {
-      background-color: $blue-2;
+    .q-item {
+      padding: 8px 5px;
+    }
+  }
+
+  .body .q-list > .q-item {
+    border-radius: 10px;
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 15px;
+    padding: 8px 12px;
+    // active link
+    &.link-active-class {
+      background-color: $blue-1;
+
+      .q-item__section > .q-item__label {
+        color: $primary-1 !important;
+      }
+    }
+
+    .q-item__section > .q-item__label {
+      line-height: 0.08125em !important;
+    }
+  }
+
+  .footer {
+    padding-bottom: 1rem;
+    .q-item .q-item__section > .q-item__label {
+      line-height: 0.08125em !important;
     }
   }
 }

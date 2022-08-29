@@ -1,32 +1,38 @@
 <template>
-  <q-header elevated class="bg-white text-dark">
+  <q-header bordered class="bg-grey-1 text-dark">
     <q-toolbar>
-      <q-btn flat round dense icon="menu" class="q-mr-sm" @click="toggleMenu" />
+      <q-btn
+        icon="menu"
+        :ripple="false"
+        flat
+        round
+        dense
+        @click="toggleMenu"
+        class="q-mr-sm"
+      />
       <q-toolbar-title class="text-center">
         <q-btn
           label="SiRAl-UCLV"
           padding="xs sm"
           to="/"
+          :ripple="false"
           flat
           unelevated
           no-caps
-          class="text-body1 text-weight-bold"
+          class="text-body2 text-weight-bold"
         />
       </q-toolbar-title>
-      <q-btn flat round dense icon="more_vert" />
+      <q-btn icon="more_vert" :ripple="false" flat round dense />
     </q-toolbar>
   </q-header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { defineEmits } from 'vue';
 
-export default defineComponent({
-  name: 'MainHeader',
-  emits: ['toggle:drawerState'],
-  setup(props, context) {
-    const toggleMenu = () => context.emit('toggle:drawerState');
-    return { toggleMenu };
-  },
-});
+const emits = defineEmits<{
+  (e: 'toggle:drawerState'): void;
+}>();
+
+const toggleMenu = () => emits('toggle:drawerState');
 </script>

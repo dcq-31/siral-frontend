@@ -46,7 +46,7 @@ const props = defineProps<{
   buttonsClosePopup: boolean;
 }>();
 
-const emit = defineEmits<{
+const emits = defineEmits<{
   (e: 'update:modelValue', value: IDateRange): void;
 }>();
 
@@ -54,12 +54,12 @@ const modelDate: Ref<string | IDateRange> = ref(props.modelValue);
 
 const accept = () => {
   if (typeof modelDate.value == 'string') {
-    emit('update:modelValue', {
+    emits('update:modelValue', {
       from: modelDate.value,
       to: modelDate.value,
     } as IDateRange);
   } else if (typeof modelDate.value == 'object') {
-    emit('update:modelValue', modelDate.value);
+    emits('update:modelValue', modelDate.value);
   } else {
     /**
      * !Show log if not assert

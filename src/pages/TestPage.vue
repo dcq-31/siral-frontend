@@ -8,7 +8,10 @@
             :key="`test-page-btn-${index}`"
             :color="color"
             :label="color"
+            :ripple="false"
+            size="md"
             no-caps
+            unelevated
           />
         </div>
         <div class="col-12 q-gutter-md">
@@ -26,6 +29,27 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </q-card-section>
           </q-card>
+        </div>
+
+        <div class="col-12 q-gutter-sm">
+          <q-btn
+            color="primary"
+            label="Hello World"
+            :ripple="false"
+            size="md"
+            no-caps
+            unelevated
+          />
+
+          <q-btn
+            color="primary"
+            label="Hello World"
+            :ripple="false"
+            size="md"
+            no-caps
+            outline
+            unelevated
+          />
         </div>
       </div>
     </div>

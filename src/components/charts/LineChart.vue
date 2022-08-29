@@ -12,10 +12,7 @@
 <script setup lang="ts">
 /**
  * TODO: Later add types for charts, read documentation for @types/echarts
- */
-/**
- * TODO: Create a xAxis of type: category
- * TODO: Generate a array of dates, from startDate to endDate
+ * TODO: Better chart configurations
  */
 import { computed } from 'vue';
 import { date } from 'quasar';
@@ -24,6 +21,7 @@ import { use } from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { LineChart } from 'echarts/charts';
 import {
+  TitleComponent,
   TooltipComponent,
   GridComponent,
   DataZoomComponent,
@@ -42,6 +40,7 @@ import { IRangeData } from 'src/types/types';
 use([
   SVGRenderer,
   LineChart,
+  TitleComponent,
   TooltipComponent,
   GridComponent,
   DataZoomComponent,
@@ -58,14 +57,37 @@ const props = defineProps<{
 const option = computed(() => {
   return {
     animation: false,
+
+    // Grid
+    grid: {
+      bottom: 90,
+    },
+
+    // Title
+    title: {
+      text: 'Gastos por día',
+      left: 'center',
+      textStyle: {
+        color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.TITLE.FONT_SIZE,
+        fontWeight: CHARTS.TITLE.FONT_WEIGHT,
+        fontFamily: CHARTS.TITLE.FONT_FAMILY,
+        lineHeight: CHARTS.TITLE.LINE_HEIGHT,
+      },
+    },
+
+    // X-axis
     xAxis: {
       name: 'Fecha',
       nameLocation: 'center',
       nameTextStyle: {
-        fontSize: CHARTS.TEXT.FONT_SIZE,
         color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.TEXT.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
-      nameGap: 25,
+      nameGap: 30,
       type: 'category',
       boundaryGap: false,
       data: get_array_dates(props.data.range.from, props.data.range.to),
@@ -75,8 +97,11 @@ const option = computed(() => {
         },
       },
       axisLabel: {
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
         color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
         formatter: (value: string) => {
           const currentDate = date.extractDate(value, FRIENDLY_DATE_MASK);
           if (currentDate.getDate() == 1 && currentDate.getMonth() == 0) {
@@ -94,11 +119,16 @@ const option = computed(() => {
         },
       },
     },
+
+    // Y-axis
     yAxis: {
       name: 'Gastos',
       nameTextStyle: {
-        fontSize: CHARTS.TEXT.FONT_SIZE,
         color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.TEXT.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
       type: 'value',
       axisLine: {
@@ -107,24 +137,44 @@ const option = computed(() => {
         },
       },
       axisLabel: {
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
         color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
     },
+
+    // Tooltip
     tooltip: {
       trigger: 'axis',
       textStyle: {
-        fontSize: CHARTS.TOOLTIP.FONT_SIZE,
         color: CHARTS.TOOLTIP.COLOR,
+        fontSize: CHARTS.TOOLTIP.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
     },
+
+    // Legend
     legend: {
-      left: 'center',
+      align: 'left',
+      itemHeight: 16,
+      bottom: 'bottom',
+      lineStyle: {
+        width: 3,
+      },
       textStyle: {
-        fontSize: CHARTS.LEGEND.FONT_SIZE,
         color: CHARTS.LEGEND.COLOR,
+        fontSize: CHARTS.LEGEND.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
     },
+
+    // Data-Zoom
     dataZoom: [
       {
         type: 'inside',
@@ -132,9 +182,11 @@ const option = computed(() => {
         maxValueSpan: 4,
       },
     ],
+
     /**
      * TODO: Reduce code
      */
+    // Series
     series: [
       {
         name: 'Desayuno',
@@ -142,6 +194,9 @@ const option = computed(() => {
         type: 'line',
         symbol: 'circle',
         symbolSize: 5,
+        lineStyle: {
+          width: 3,
+        },
       },
       {
         name: 'Almuerzo',
@@ -149,6 +204,9 @@ const option = computed(() => {
         type: 'line',
         symbol: 'circle',
         symbolSize: 5,
+        lineStyle: {
+          width: 3,
+        },
       },
       {
         name: 'Comida',
@@ -156,6 +214,9 @@ const option = computed(() => {
         type: 'line',
         symbol: 'circle',
         symbolSize: 5,
+        lineStyle: {
+          width: 3,
+        },
       },
     ],
   };

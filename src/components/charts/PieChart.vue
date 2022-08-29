@@ -18,7 +18,11 @@ import { computed } from 'vue';
 import { use } from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { PieChart } from 'echarts/charts';
-import { TooltipComponent, LegendComponent } from 'echarts/components';
+import {
+  TitleComponent,
+  LegendComponent,
+  TooltipComponent,
+} from 'echarts/components';
 import VChart from 'vue-echarts';
 
 // Types
@@ -27,7 +31,7 @@ import { TTotalScheduleData } from 'src/types/types';
 // Helpers
 import { CHARTS } from 'src/helpers/constants';
 
-use([SVGRenderer, PieChart, TooltipComponent, LegendComponent]);
+use([SVGRenderer, PieChart, TitleComponent, LegendComponent, TooltipComponent]);
 
 const props = defineProps<{
   height?: number;
@@ -37,21 +41,46 @@ const props = defineProps<{
 
 const option = computed(() => {
   return {
+    // Title
+    title: {
+      text: 'Porcientos de comidas',
+      left: 'center',
+      textStyle: {
+        color: CHARTS.TEXT.COLOR,
+        fontSize: CHARTS.TITLE.FONT_SIZE,
+        fontWeight: CHARTS.TITLE.FONT_WEIGHT,
+        fontFamily: CHARTS.TITLE.FONT_FAMILY,
+        lineHeight: CHARTS.TITLE.LINE_HEIGHT,
+      },
+    },
+
+    // Tooltip
     tooltip: {
       trigger: 'item',
       formatter: '{b}: {c} ({d}%)',
       textStyle: {
         fontSize: CHARTS.TOOLTIP.FONT_SIZE,
         color: CHARTS.TOOLTIP.COLOR,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
     },
+
+    // Legend
     legend: {
-      left: 'center',
+      align: 'left',
+      bottom: 'bottom',
       textStyle: {
-        fontSize: CHARTS.LEGEND.FONT_SIZE,
         color: CHARTS.LEGEND.COLOR,
+        fontSize: CHARTS.LEGEND.FONT_SIZE,
+        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
+        fontFamily: CHARTS.TEXT.FONT_FAMILY,
+        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
       },
     },
+
+    // Series
     series: [
       {
         type: 'pie',

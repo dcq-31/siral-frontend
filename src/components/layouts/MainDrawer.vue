@@ -28,7 +28,13 @@
             </q-item-section>
 
             <q-item-section side top>
-              <q-icon name="account_box" color="primary-1" size="2.7rem" />
+              <q-avatar
+                size="2.5rem"
+                font-size="2rem"
+                color="primary"
+                text-color="white"
+                icon="person_outline"
+              />
             </q-item-section>
           </q-item>
         </div>
@@ -43,19 +49,17 @@
       <q-list padding>
         <q-item
           v-for="(link, index) of links"
-          :to="link.to"
+          :to="{ name: link.to }"
           active-class="link-active-class"
           exact
           clickable
           :key="`main-drawer-link-${index}`"
         >
           <q-item-section side>
-            <q-icon :name="link.icon" color="primary-1" font-size="30px" />
+            <q-icon :name="link.icon" font-size="30px" />
           </q-item-section>
           <q-item-section>
-            <q-item-label class="text-body2 text-grey-8">{{
-              link.label
-            }}</q-item-label>
+            <q-item-label class="text-body2">{{ link.label }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -66,10 +70,10 @@
     <div class="footer absolute-bottom">
       <q-item to="/login" clickable @click="closeSesion">
         <q-item-section side>
-          <q-icon name="logout" color="primary-1" font-size="30px" />
+          <q-icon name="logout" color="dark" font-size="30px" />
         </q-item-section>
         <q-item-section>
-          <q-item-label class="text-body2 text-grey-8"
+          <q-item-label class="text-body2 text-dark"
             >Cerrar sesión</q-item-label
           >
         </q-item-section>
@@ -80,7 +84,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { ROUTES } from 'src/router/names';
+import { computed } from 'vue';
 
 interface ILink {
   icon: string;
@@ -96,6 +101,13 @@ const emits = defineEmits<{
   (e: 'update:drawerState', value: boolean): void;
 }>();
 
+const links: Array<ILink> = [
+  { icon: 'favorite_border', to: ROUTES.HOME, label: 'Inicio' },
+  { icon: 'grid_view', to: ROUTES.BOOKING, label: 'Reservas' },
+  { icon: 'show_chart', to: ROUTES.STATISTICS, label: 'Estadísticas' },
+  { icon: 'code', to: ROUTES.TEST, label: 'Página de Testing' },
+];
+
 const closeDrawer = () => (drawerStateComputed.value = false);
 const closeSesion = () => console.log('Close Sesion button clicked!');
 
@@ -107,13 +119,6 @@ const drawerStateComputed = computed({
     emits('update:drawerState', value);
   },
 });
-
-const links: Array<ILink> = [
-  { icon: 'home', to: '/', label: 'Inicio' },
-  { icon: 'calendar_month', to: '/reserve', label: 'Reservar' },
-  { icon: 'list', to: '/all-reserves', label: 'Todas las reservas' },
-  { icon: 'bar_chart', to: '/statistics', label: 'Estadísticas' },
-];
 </script>
 
 <style lang="scss">
@@ -134,17 +139,24 @@ const links: Array<ILink> = [
     margin-top: 10px;
     margin-left: 15px;
     padding: 8px 12px;
-    // active link
-    &.link-active-class {
-      background-color: $blue-1;
 
-      .q-item__section > .q-item__label {
-        color: $primary-1 !important;
+    .q-item__section > {
+      .q-item__label,
+      .q-icon {
+        line-height: 0.08125em !important;
+        color: $dark !important;
       }
     }
+    // active link
+    &.link-active-class {
+      background-color: lighten($primary, 40%);
 
-    .q-item__section > .q-item__label {
-      line-height: 0.08125em !important;
+      .q-item__section > {
+        .q-item__label,
+        .q-icon {
+          color: $primary !important;
+        }
+      }
     }
   }
 

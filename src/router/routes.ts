@@ -4,27 +4,32 @@ import MainLayout from 'layouts/MainLayout.vue';
 import AuthLayout from 'layouts/AuthLayout.vue';
 // Pages
 import HomePage from 'pages/HomePage.vue';
-import AccountPage from 'pages/AccountPage.vue';
 import StatisticsPage from 'pages/StatisticsPage.vue';
-import ReservePage from 'pages/ReservePage.vue';
+import BookingPage from 'pages/BookingPage.vue';
 import LoginPage from 'pages/LoginPage.vue';
 import TestPage from 'pages/TestPage.vue';
+
+import { ROUTES } from './names';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: MainLayout,
     children: [
-      { path: '', component: HomePage },
-      { path: '/statistics', component: StatisticsPage },
-      { path: '/reserve', component: ReservePage },
-      { path: '/account', component: AccountPage },
-      { path: '/test', component: TestPage },
+      { path: '', name: ROUTES.HOME, component: HomePage },
+      {
+        path: '/statistics',
+        name: ROUTES.STATISTICS,
+        component: StatisticsPage,
+      },
+      { path: '/booking', name: ROUTES.BOOKING, component: BookingPage },
+      { path: '/test', name: ROUTES.TEST, component: TestPage },
     ],
   },
 
   {
     path: '/login',
+    name: ROUTES.LOGIN,
     component: AuthLayout,
     children: [{ path: '', component: LoginPage }],
   },

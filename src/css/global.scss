@@ -12,7 +12,7 @@ section {
 
 // Text with gradient
 .text-gradient-primary {
-  background: linear-gradient(-45deg, $primary, $primary-1);
+  background: linear-gradient(-45deg, $primary, light($primary, 50%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

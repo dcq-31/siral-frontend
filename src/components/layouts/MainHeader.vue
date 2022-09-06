@@ -7,14 +7,15 @@
         flat
         round
         dense
-        @click="toggleMenu"
+        @click="openDrawer"
         class="q-mr-sm"
       />
+
       <q-toolbar-title class="text-center">
         <q-btn
-          label="SiRAl-UCLV"
+          label="Aplicación de Reservación"
           padding="xs sm"
-          to="/"
+          :to="{ name: ROUTES.HOME }"
           :ripple="false"
           flat
           unelevated
@@ -22,17 +23,33 @@
           class="text-body2 text-weight-bold"
         />
       </q-toolbar-title>
-      <q-btn icon="more_vert" :ripple="false" flat round dense />
+
+      <q-btn icon="more_vert" :ripple="false" flat round dense>
+        <q-menu>
+          <q-list>
+            <q-item
+              v-for="index in 3"
+              :key="`main-header-dropdown-item-${index}`"
+              clickable
+              v-close-popup
+            >
+              <q-item-section>
+                <q-item-label>Opción {{ index }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
     </q-toolbar>
   </q-header>
 </template>
 
 <script setup lang="ts">
-import { defineEmits } from 'vue';
+import { ROUTES } from 'src/router/names';
 
 const emits = defineEmits<{
-  (e: 'toggle:drawerState'): void;
+  (e: 'update:drawerState', value: boolean): void;
 }>();
 
-const toggleMenu = () => emits('toggle:drawerState');
+const openDrawer = () => emits('update:drawerState', true);
 </script>

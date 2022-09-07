@@ -38,8 +38,8 @@
  * TODO: Limit user selection to certain times in the calendar input
  */
 import { ref, Ref, defineProps, defineEmits } from 'vue';
-import { IDateRange } from 'src/types/types';
-import { ISO_DATE_MASK } from 'src/helpers/constants';
+import { IDateRange } from 'src/types';
+import { ISO_DATE_MASK } from 'src/helpers';
 
 const props = defineProps<{
   modelValue: IDateRange;

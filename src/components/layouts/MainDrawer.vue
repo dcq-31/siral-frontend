@@ -48,15 +48,15 @@
     <div class="body">
       <q-list padding>
         <q-item
-          v-for="(link, index) of links"
-          :to="{ name: link.to }"
+          v-for="(link, index) of LINKS"
+          :to="link.to"
           active-class="link-active-class"
           exact
           clickable
           :key="`main-drawer-link-${index}`"
         >
           <q-item-section side>
-            <q-icon :name="link.icon" font-size="30px" />
+            <q-icon :name="link.icon.name" font-size="30px" />
           </q-item-section>
           <q-item-section>
             <q-item-label class="text-body2">{{ link.label }}</q-item-label>
@@ -84,14 +84,9 @@
 </template>
 
 <script setup lang="ts">
-import { ROUTES } from 'src/router/names';
 import { computed } from 'vue';
-
-interface ILink {
-  icon: string;
-  to: string;
-  label: string;
-}
+import { ROUTES } from 'src/router/names';
+import { IIconLink } from 'src/types';
 
 const props = defineProps<{
   drawerState: boolean;
@@ -101,11 +96,27 @@ const emits = defineEmits<{
   (e: 'update:drawerState', value: boolean): void;
 }>();
 
-const links: Array<ILink> = [
-  { icon: 'favorite_border', to: ROUTES.HOME, label: 'Inicio' },
-  { icon: 'grid_view', to: ROUTES.BOOKING, label: 'Reservas' },
-  { icon: 'show_chart', to: ROUTES.STATISTICS, label: 'Estadísticas' },
-  { icon: 'code', to: ROUTES.TEST, label: 'Página de Testing' },
+const LINKS: Array<IIconLink> = [
+  {
+    icon: { name: 'favorite_border' },
+    to: { name: ROUTES.HOME },
+    label: 'Inicio',
+  },
+  {
+    icon: { name: 'grid_view' },
+    to: { name: ROUTES.BOOKING },
+    label: 'Reservas',
+  },
+  {
+    icon: { name: 'show_chart' },
+    to: { name: ROUTES.STATISTICS },
+    label: 'Estadísticas',
+  },
+  {
+    icon: { name: 'code' },
+    to: { name: ROUTES.TEST },
+    label: 'Página de Testing',
+  },
 ];
 
 const closeDrawer = () => (drawerStateComputed.value = false);

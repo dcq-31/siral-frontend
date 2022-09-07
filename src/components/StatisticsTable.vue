@@ -2,11 +2,16 @@
   TODO: Use QTable that support more features
 -->
 <template>
-  <q-markup-table :style="`max-height: ${maxHeight}px`" class="text-body2">
+  <q-markup-table
+    flat
+    bordered
+    :style="`max-height: ${maxHeight}px`"
+    class="text-body2"
+  >
     <thead>
       <tr class="bg-primary text-white">
         <th
-          v-for="(name, index) of colNames"
+          v-for="(name, index) of COLUMNS_NAMES"
           :key="`statistics-table-head-${index}`"
           :class="index == 0 ? 'text-left' : 'text-right'"
         >
@@ -31,16 +36,19 @@
 
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
-import { get_array_dates } from 'src/helpers/functions';
-import { IRangeData } from 'src/types/types';
+import { get_array_dates } from 'src/helpers';
+import { IRangeData } from 'src/types';
 
-const colNames = ['Fecha', 'Desayunos', 'Almuerzos', 'Comidas', 'Importe'];
+const COLUMNS_NAMES = ['Fecha', 'Desayunos', 'Almuerzos', 'Comidas', 'Importe'];
 
 const props = defineProps<{
   data: IRangeData;
   maxHeight: number;
 }>();
 
+/*
+ * Computed Properties
+ */
 const dates = computed(() =>
   get_array_dates(props.data.range.from, props.data.range.to)
 );

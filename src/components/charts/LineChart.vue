@@ -21,7 +21,6 @@ import { use } from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { LineChart } from 'echarts/charts';
 import {
-  TitleComponent,
   TooltipComponent,
   GridComponent,
   DataZoomComponent,
@@ -31,16 +30,20 @@ import {
 import VChart from 'vue-echarts';
 
 // Helpers
-import { FRIENDLY_DATE_MASK, MONTHS, CHARTS } from 'src/helpers/constants';
-import { get_array_dates } from 'src/helpers/functions';
+import {
+  FRIENDLY_DATE_MASK,
+  MONTHS,
+  CHARTS,
+  TEXT_STYLE_OPTION,
+  get_array_dates,
+} from 'src/helpers';
 
 // Types
-import { IRangeData } from 'src/types/types';
+import { IRangeData } from 'src/types';
 
 use([
   SVGRenderer,
   LineChart,
-  TitleComponent,
   TooltipComponent,
   GridComponent,
   DataZoomComponent,
@@ -57,36 +60,16 @@ const props = defineProps<{
 const option = computed(() => {
   return {
     animation: false,
-
     // Grid
     grid: {
-      bottom: 90,
-    },
-
-    // Title
-    title: {
-      text: 'Gastos por día',
-      left: 'center',
-      textStyle: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.TITLE.FONT_SIZE,
-        fontWeight: CHARTS.TITLE.FONT_WEIGHT,
-        fontFamily: CHARTS.TITLE.FONT_FAMILY,
-        lineHeight: CHARTS.TITLE.LINE_HEIGHT,
-      },
+      bottom: 100,
     },
 
     // X-axis
     xAxis: {
       name: 'Fecha',
       nameLocation: 'center',
-      nameTextStyle: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.TEXT.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      nameTextStyle: TEXT_STYLE_OPTION,
       nameGap: 30,
       type: 'category',
       boundaryGap: false,
@@ -98,7 +81,7 @@ const option = computed(() => {
       },
       axisLabel: {
         color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
+        fontSize: CHARTS.TEXT.FONT_SIZE,
         fontWeight: CHARTS.TEXT.FONT_WEIGHT,
         fontFamily: CHARTS.TEXT.FONT_FAMILY,
         lineHeight: CHARTS.TEXT.LINE_HEIGHT,
@@ -123,38 +106,20 @@ const option = computed(() => {
     // Y-axis
     yAxis: {
       name: 'Gastos',
-      nameTextStyle: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.TEXT.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      nameTextStyle: TEXT_STYLE_OPTION,
       type: 'value',
       axisLine: {
         lineStyle: {
           color: CHARTS.AXIS.COLOR,
         },
       },
-      axisLabel: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      axisLabel: TEXT_STYLE_OPTION,
     },
 
     // Tooltip
     tooltip: {
       trigger: 'axis',
-      textStyle: {
-        color: CHARTS.TOOLTIP.COLOR,
-        fontSize: CHARTS.TOOLTIP.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      textStyle: TEXT_STYLE_OPTION,
     },
 
     // Legend
@@ -165,13 +130,7 @@ const option = computed(() => {
       lineStyle: {
         width: 3,
       },
-      textStyle: {
-        color: CHARTS.LEGEND.COLOR,
-        fontSize: CHARTS.LEGEND.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      textStyle: TEXT_STYLE_OPTION,
     },
 
     // Data-Zoom

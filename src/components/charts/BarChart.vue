@@ -15,20 +15,16 @@ import { computed } from 'vue';
 import { use } from 'echarts/core';
 import { SVGRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
-import {
-  GridComponent,
-  TitleComponent,
-  TooltipComponent,
-} from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
 import VChart from 'vue-echarts';
 
 // Types
-import { TMonthCost } from 'src/types/types';
+import { TMonthCost } from 'src/types';
 
 // Helpers
-import { MONTHS, CHARTS } from 'src/helpers/constants';
+import { MONTHS, CHARTS, TEXT_STYLE_OPTION } from 'src/helpers';
 
-use([SVGRenderer, BarChart, GridComponent, TitleComponent, TooltipComponent]);
+use([SVGRenderer, BarChart, GridComponent, TooltipComponent]);
 
 const props = defineProps<{
   height?: number;
@@ -39,18 +35,6 @@ const props = defineProps<{
 const option = computed(() => {
   return {
     animation: false,
-    // Title
-    title: {
-      text: 'Gastos por meses',
-      left: 'center',
-      textStyle: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.TITLE.FONT_SIZE,
-        fontWeight: CHARTS.TITLE.FONT_WEIGHT,
-        fontFamily: CHARTS.TITLE.FONT_FAMILY,
-        lineHeight: CHARTS.TITLE.LINE_HEIGHT,
-      },
-    },
 
     // X-axis
     xAxis: {
@@ -60,13 +44,7 @@ const option = computed(() => {
           color: CHARTS.AXIS.COLOR,
         },
       },
-      axisLabel: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      axisLabel: TEXT_STYLE_OPTION,
       axisTick: {
         alignWithLabel: true,
         lineStyle: {
@@ -84,13 +62,7 @@ const option = computed(() => {
           color: CHARTS.AXIS.COLOR,
         },
       },
-      axisLabel: {
-        color: CHARTS.TEXT.COLOR,
-        fontSize: CHARTS.AXIS_LABEL.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      axisLabel: TEXT_STYLE_OPTION,
     },
 
     // Tooltip
@@ -99,13 +71,7 @@ const option = computed(() => {
       axisPointer: {
         type: 'shadow',
       },
-      textStyle: {
-        color: CHARTS.TOOLTIP.COLOR,
-        fontSize: CHARTS.TOOLTIP.FONT_SIZE,
-        fontWeight: CHARTS.TEXT.FONT_WEIGHT,
-        fontFamily: CHARTS.TEXT.FONT_FAMILY,
-        lineHeight: CHARTS.TEXT.LINE_HEIGHT,
-      },
+      textStyle: TEXT_STYLE_OPTION,
     },
 
     // Series

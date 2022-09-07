@@ -3,10 +3,8 @@
     <div class="container">
       <q-card bordered class="q-mx-auto q-py-md" style="max-width: 350px" flat>
         <q-card-section class="text-center">
-          <div class="text-body1 text-weight-bold">Bienvenido a SIRAl-UCLV</div>
-          <div class="text-subtitle1 text-grey-8">
-            Inicia sesión para continuar
-          </div>
+          <div class="text-body1 text-weight-bold q-mb-sm">Bienvenido</div>
+          <div class="text-body2 text-grey-7">Inicia sesión para continuar</div>
         </q-card-section>
 
         <!-- Submit form -->

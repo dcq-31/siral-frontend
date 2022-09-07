@@ -95,10 +95,7 @@
 <script setup lang="ts">
 const theme = [
   'primary',
-  'primary-1',
-  'primary-2',
   'secondary',
-  'secondary-1',
   'accent',
   'dark',
   'positive',

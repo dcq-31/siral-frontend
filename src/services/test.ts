@@ -1,8 +1,8 @@
 /**
  * Services that return constants and random values (for test)
  */
-import { test_get_charts_data } from 'src/helpers/functions';
-import { TDayScheduleData } from 'src/types/types';
+import { test_get_charts_data } from 'src/helpers';
+import { TDayScheduleData } from 'src/types';
 
 export const getChartData = (
   dateStart: string,

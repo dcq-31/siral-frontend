@@ -4,13 +4,19 @@
     <section class="text-center">
       <div class="row">
         <div class="col-10 col-md-7 col-xl-8 q-mx-auto q-gutter-y-lg">
-          <q-img src="logo.png" alt="SIRAl logo" width="145px" fit="fill" />
+          <q-img
+            src="hero-image.png"
+            alt="logo image"
+            width="250px"
+            fit="fill"
+          />
           <div class="text-h4 text-weight-bold text-gradient-primary">
-            Sistema de Reservación de Alimentación
+            Sistema de Reservación
           </div>
 
           <div>
             <q-btn
+              :to="{ name: ROUTES.HOME }"
               color="primary"
               label="Menú de hoy"
               padding="sm md"
@@ -64,8 +70,8 @@
 
       <div class="row q-gutter-y-lg">
         <div
-          v-for="({ title, subtitle, icon }, key) of benefits"
-          :key="`home-page-benefit-${key}`"
+          v-for="({ title, subtitle, icon }, index) of BENEFITS"
+          :key="`home-page-benefit-${index}`"
           class="col-12 col-sm-6 col-md-4"
         >
           <q-card class="text-center" flat>
@@ -92,43 +98,43 @@
   </q-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ROUTES } from 'src/router/names';
+import { IIcon } from 'src/types';
 
-export default defineComponent({
-  name: 'HomePage',
-  setup() {
-    const benefits = [
-      {
-        title: 'Mejor Seguridad',
-        subtitle:
-          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
-        icon: {
-          name: 'security_update_good',
-          color: 'primary',
-        },
-      },
-      {
-        title: 'Disponibilidad',
-        subtitle:
-          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
-        icon: {
-          name: 'wifi',
-          color: 'secondary',
-        },
-      },
-      {
-        title: 'Vinculado a tu cuenta',
-        subtitle:
-          '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
-        icon: {
-          name: 'manage_accounts',
-          color: 'accent',
-        },
-      },
-    ];
+interface IBenefit {
+  title: string;
+  subtitle: string;
+  icon: IIcon;
+}
 
-    return { benefits };
+const BENEFITS: IBenefit[] = [
+  {
+    title: 'Mejor Seguridad',
+    subtitle:
+      '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+    icon: {
+      name: 'security_update_good',
+      color: 'primary',
+    },
   },
-});
+  {
+    title: 'Disponibilidad',
+    subtitle:
+      '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+    icon: {
+      name: 'wifi',
+      color: 'secondary',
+    },
+  },
+  {
+    title: 'Vinculado a tu cuenta',
+    subtitle:
+      '  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem est voluptate porro ad asperiores.',
+    icon: {
+      name: 'manage_accounts',
+      color: 'green',
+    },
+  },
+];
 </script>

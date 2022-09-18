@@ -5,9 +5,9 @@
       <section class="q-py-md">
         <div class="row justify-center q-gutter-y-sm">
           <div class="col-12 col-sm-8 col-md-6 text-center">
-            <div class="text-h5 text-weight-medium q-mb-md">Estadísticas</div>
-            <div class="text-body2 text-grey-7 q-mx-md">
-              Resumen de sus gastos de reservas en SiRAl-UCLV.
+            <div class="text-h2 text-weight-medium q-mb-md">Estadísticas</div>
+            <div class="text-body1 text-grey-7 q-mx-md">
+              Resumen de sus gastos de reservas
             </div>
           </div>
         </div>

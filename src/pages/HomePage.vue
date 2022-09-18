@@ -10,7 +10,7 @@
             width="250px"
             fit="fill"
           />
-          <div class="text-h4 text-weight-bold text-gradient-primary">
+          <div class="text-h1 text-weight-bold text-gradient-primary">
             Sistema de Reservación
           </div>
 

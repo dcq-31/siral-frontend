@@ -30,3 +30,15 @@ export interface IIcon {
   name: string;
   color?: string;
 }
+
+/*
+ * Quasar Components
+ */
+
+/**
+ * QAvatar
+ */
+export interface IQAvatarProps {
+  color?: string;
+  textColor?: string;
+}

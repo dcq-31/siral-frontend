@@ -1,7 +1,7 @@
 /**
  * Schedules of the day to eat
  */
-type TDaySchedule = 'breakfast' | 'lunch' | 'dinner';
+export type TDaySchedule = 'breakfast' | 'lunch' | 'dinner';
 
 /**
  *

@@ -38,6 +38,18 @@
       </div>
       <!-- / Colors -->
 
+      <!-- Typography -->
+      <div class="row q-gutter-y-md">
+        <div
+          v-for="index in 6"
+          :key="`test-page-heading-${index}`"
+          class="col-12 col-md-6 col-lg-4"
+        >
+          <div :class="`text-h${index}`">text-h{{ index }}</div>
+        </div>
+      </div>
+      <!-- / Typography -->
+
       <!-- Buttons -->
       <div class="row q-gutter-y-md">
         <div class="text-h6 text-bold">Buttons</div>
@@ -77,7 +89,7 @@
           />
 
           <q-btn
-            color="primary"
+            color="grey-8"
             label="Hello World"
             :ripple="false"
             padding="xs sm"

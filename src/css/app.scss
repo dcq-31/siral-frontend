@@ -1,3 +1,6 @@
 // app global css in SCSS forms
+@import './variables.scss';
 @import './global.scss';
 @import './colors.scss';
+@import './components.scss';
+@import './utils.scss';

@@ -12,9 +12,10 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary: #37a9e1;
-$secondary: #eba42d;
-$accent: #333e50;
+$primary: #47b9ad;
+$secondary: #e9e0e0;
+$brink-pink: #f85e81;
+$accent: #f7953b;
 $dark: #1d1d1d;
 $dark-page: #121212;
 $positive: #21ba45;
@@ -22,43 +23,65 @@ $negative: #c10015;
 $info: #4fcfe8;
 $warning: #f0f05b;
 
-$white: #ffffff;
-
 // Globals
 $body-color: #262626;
 
 // Typography
-$h4: (
+$h1: (
+  size: 3.5rem,
+  line-height: 3.2rem,
+  letter-spacing: 0.01562em,
+  weight: 300,
+);
+
+$h2: (
   size: 2.5rem,
+  line-height: 2.8rem,
+  letter-spacing: 0.033em,
+  weight: 400,
+);
+
+$h3: (
+  size: 2.2rem,
+  line-height: 3.125rem,
+  letter-spacing: normal,
+  weight: 400,
+);
+
+$h4: (
+  size: 1.8rem,
   line-height: 2.7rem,
   letter-spacing: 0.02em,
   weight: 400,
-) !default;
+);
 
 $h5: (
-  size: 1.9rem,
+  size: 1.4rem,
   line-height: 2rem,
   letter-spacing: normal,
   weight: 400,
-) !default;
+);
 
 $h6: (
-  size: 1.6rem,
-  line-height: 2rem,
+  size: 1.2rem,
+  line-height: 1.5rem,
   letter-spacing: 0.0125em,
   weight: 500,
-) !default;
+);
 
 $body1: (
   size: 1.2rem,
   line-height: 1.4rem,
   letter-spacing: 0.01356em,
   weight: 400,
-) !default;
+);
 
 $body2: (
   size: 1rem,
   line-height: 1.5rem,
   letter-spacing: 0.03125em,
   weight: 400,
-) !default;
+);
+
+// Buttons
+$button-padding: 3px 14px;

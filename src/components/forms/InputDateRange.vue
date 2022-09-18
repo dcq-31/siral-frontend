@@ -37,7 +37,7 @@
 /**
  * TODO: Limit user selection to certain times in the calendar input
  */
-import { ref, Ref, defineProps, defineEmits } from 'vue';
+import { ref, Ref } from 'vue';
 import { IDateRange } from 'src/types';
 import { ISO_DATE_MASK } from 'src/helpers';
 

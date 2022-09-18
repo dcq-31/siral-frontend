@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { computed } from 'vue';
 import { get_array_dates } from 'src/helpers';
 import { IRangeData } from 'src/types';
 

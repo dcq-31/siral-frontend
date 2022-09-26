@@ -1,2 +1,3 @@
-export * from './types';
+export * from './all';
 export * from './component';
+export * from './offer';

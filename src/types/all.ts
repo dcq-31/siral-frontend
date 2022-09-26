@@ -38,8 +38,8 @@ export type TTotalScheduleData = {
  * Date Range
  */
 export interface IDateRange {
-  from: string;
-  to: string;
+  from: string | null;
+  to: string | null;
 }
 
 /**

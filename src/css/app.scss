@@ -1,4 +1,7 @@
 // app global css in SCSS forms
+// vendor
+@import 'vendor/rfs';
+
 @import './variables.scss';
 @import './global.scss';
 @import './colors.scss';

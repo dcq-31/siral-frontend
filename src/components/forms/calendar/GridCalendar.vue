@@ -66,9 +66,9 @@ const reserves: Ref<ICalendarItem[]> = ref([
     startDate: new Date(2022, 8, 18),
   },
   {
-    id: 'event-4',
-    title: 'lunch',
-    startDate: new Date(2022, 8, 18),
+    id: 'event-5',
+    title: 'dinner',
+    startDate: new Date(2022, 7, 28),
   },
 ]);
 
@@ -109,6 +109,11 @@ const functionItemsOfDay = (day: Date) => {
     .cv-weekdays .cv-day {
       color: $grey-8;
       border: none;
+
+      // handle dates outside the current month
+      &.outsideOfMonth {
+        visibility: hidden;
+      }
       // remove default day number, use the provided slot for that
       .cv-day-number {
         display: none;

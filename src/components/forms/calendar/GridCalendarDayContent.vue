@@ -1,6 +1,6 @@
 <template>
   <div class="day-content text-center q-mx-auto" @click="showDayInformation">
-    <div class="day-number" :class="[isDayinPeriod]">
+    <div class="day-number">
       <q-avatar size="1.8rem" font-size=".9rem" v-bind="avatarComputedProps">
         {{ day.getDate() }}
       </q-avatar>
@@ -37,13 +37,6 @@ interface ICalendarDayContentProps {
 
 const props = defineProps<ICalendarDayContentProps>();
 const avatarStatus = ref(false);
-
-/**
- * Is Day in the current period
- */
-const isDayinPeriod = computed(() =>
-  props.day.getMonth() === props.period.getMonth() ? '' : 'hidden'
-);
 
 /**
  * Computed props for avatar component

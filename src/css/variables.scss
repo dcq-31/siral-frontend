@@ -2,6 +2,10 @@
 * Custom variables
 **/
 
+// Globals
+$body-color: #595959;
+$body-font-size: 1rem;
+
 // Color
 $white: #ffffff;
 
@@ -10,5 +14,34 @@ $border-width: 1px;
 $border-color: $grey-4;
 
 // Buttons
-$btn-border-width: $border-width;
-$btn-border-color: $border-color;
+$button-font-size: 1rem;
+$button-border-width: $border-width;
+$button-border-color: $border-color;
+$button-min-height: 2.4em;
+$button-letter-spacing: 0.042em;
+
+// btn-dense
+$button-dense-padding: 0.3em 0.35em;
+
+// Typography
+// headings-variables
+$headings-line-height: 1.2;
+
+// display headings
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem,
+);
+
+$display-line-height: $headings-line-height;
+$display-font-weight: 300 !default;
+
+// Date Component
+$date-actions-padding: 10px;
+$date-navigation-arrow-color: $grey-7;
+$date-heading-color: $dark;
+$date-heading-letter-spacing: 0.05em;

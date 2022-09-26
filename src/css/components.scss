@@ -1,3 +1,37 @@
 /**
 * Components
 **/
+// Button
+.button {
+  font-size: $button-font-size;
+  letter-spacing: $button-letter-spacing;
+  min-height: $button-min-height;
+}
+
+.q-btn--dense {
+  padding: $button-dense-padding;
+}
+
+// Date
+.q-date {
+  &.q-date--portrait-minimal {
+    .q-date__view {
+      .q-date__navigation {
+        .q-date__arrow {
+          color: $date-navigation-arrow-color;
+        }
+        .relative-position .q-btn .q-btn__content {
+          color: $date-heading-color;
+          letter-spacing: $date-heading-letter-spacing;
+        }
+      }
+      .q-date__calendar-weekdays .q-date__calendar-item {
+        color: $date-heading-color;
+        letter-spacing: $date-heading-letter-spacing;
+      }
+    }
+    .q-date__actions {
+      padding: $date-actions-padding;
+    }
+  }
+}

@@ -50,7 +50,9 @@ const props = defineProps<{
  * Computed Properties
  */
 const dates = computed(() =>
-  get_array_dates(props.data.range.from, props.data.range.to)
+  props.data.range.from !== null && props.data.range.to !== null
+    ? get_array_dates(props.data.range.from, props.data.range.to)
+    : []
 );
 
 const total = computed(() => {

@@ -73,7 +73,10 @@ const option = computed(() => {
       nameGap: 30,
       type: 'category',
       boundaryGap: false,
-      data: get_array_dates(props.data.range.from, props.data.range.to),
+      data:
+        props.data.range.from !== null && props.data.range.to !== null
+          ? get_array_dates(props.data.range.from, props.data.range.to)
+          : [],
       axisLine: {
         lineStyle: {
           color: CHARTS.AXIS.COLOR,

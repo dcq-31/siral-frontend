@@ -16,33 +16,30 @@ $primary: #47b9ad;
 $secondary: #e9e0e0;
 $brink-pink: #f85e81;
 $accent: #f7953b;
-$dark: #1d1d1d;
+$dark: #212529;
 $dark-page: #121212;
 $positive: #21ba45;
 $negative: #c10015;
 $info: #4fcfe8;
 $warning: #f0f05b;
 
-// Globals
-$body-color: #262626;
-
 // Typography
 $h1: (
-  size: 3.5rem,
+  size: 2.6rem,
   line-height: 3.2rem,
   letter-spacing: 0.01562em,
   weight: 300,
 );
 
 $h2: (
-  size: 2.5rem,
-  line-height: 2.8rem,
+  size: 2.2rem,
+  line-height: 1.2,
   letter-spacing: 0.033em,
   weight: 400,
 );
 
 $h3: (
-  size: 2.2rem,
+  size: 2rem,
   line-height: 3.125rem,
   letter-spacing: normal,
   weight: 400,
@@ -71,7 +68,7 @@ $h6: (
 
 $body1: (
   size: 1.2rem,
-  line-height: 1.4rem,
+  line-height: 1.6rem,
   letter-spacing: 0.01356em,
   weight: 400,
 );
@@ -84,4 +81,6 @@ $body2: (
 );
 
 // Buttons
-$button-padding: 3px 14px;
+$button-padding: 5px 14px;
+$button-line-height: 1.5rem;
+$button-font-weight: 500;

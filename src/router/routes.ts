@@ -5,7 +5,7 @@ import AuthLayout from 'layouts/AuthLayout.vue';
 // Pages
 import HomePage from 'pages/HomePage.vue';
 import StatisticsPage from 'pages/StatisticsPage.vue';
-import BookingPage from 'pages/BookingPage.vue';
+import ReservePage from 'pages/ReservePage.vue';
 import LoginPage from 'pages/LoginPage.vue';
 import TestPage from 'pages/TestPage.vue';
 
@@ -22,7 +22,7 @@ const routes: RouteRecordRaw[] = [
         name: ROUTES.STATISTICS,
         component: StatisticsPage,
       },
-      { path: '/booking', name: ROUTES.BOOKING, component: BookingPage },
+      { path: '/booking', name: ROUTES.RESERVES, component: ReservePage },
       { path: '/test', name: ROUTES.TEST, component: TestPage },
     ],
   },

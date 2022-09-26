@@ -1,7 +1,7 @@
 export enum ROUTES {
   HOME = 'main.home',
   STATISTICS = 'main.statistics',
-  BOOKING = 'main.booking',
+  RESERVES = 'main.reserves',
   LOGIN = 'auth.login',
   // Other routes names
   TEST = 'test',

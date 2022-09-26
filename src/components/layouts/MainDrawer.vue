@@ -104,7 +104,7 @@ const LINKS: Array<IIconLink> = [
   },
   {
     icon: { name: 'grid_view' },
-    to: { name: ROUTES.BOOKING },
+    to: { name: ROUTES.RESERVES },
     label: 'Reservas',
   },
   {
